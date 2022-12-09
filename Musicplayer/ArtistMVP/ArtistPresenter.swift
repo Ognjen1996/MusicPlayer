@@ -16,11 +16,9 @@ class ArtistPresenter {
     
     weak var delegate: ArtistPresenterDelegate?
     
-    
-
     func fetchArtistData(for artist: String) {
 
-        let baseUrl = "https://api.napster.com//v2.2/artists/\(artist))?apikey=YzVkM2I1ODItMWQ2YS00ZDc0LThmNDUtMDg1MjRlZTg5ZTU5"
+        let baseUrl = "https://api.napster.com//v2.2/artists/\(artist)?apikey=YzVkM2I1ODItMWQ2YS00ZDc0LThmNDUtMDg1MjRlZTg5ZTU5"
         guard let url = URL(string: baseUrl) else { return }
         var request = URLRequest(url: url)
         

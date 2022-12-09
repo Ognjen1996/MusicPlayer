@@ -172,7 +172,23 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="XOj-Wf-VB2"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BV0-Wb-1xe">
+                                <rect key="frame" x="50" y="97" width="290" height="200"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Artist deatils">
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="35"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="showDetails" destination="CIW-a0-TmR" eventType="touchUpInside" id="dBT-8L-Rmt"/>
+                                </connections>
+                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5hP-iP-DMM">
                                 <rect key="frame" x="16" y="353" width="374" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -198,7 +214,11 @@
                             <constraint firstItem="Rib-j4-2s7" firstAttribute="trailing" secondItem="g9g-nO-RwJ" secondAttribute="trailing" id="93p-34-ji8"/>
                             <constraint firstItem="5sI-p1-8EN" firstAttribute="leading" secondItem="Rib-j4-2s7" secondAttribute="leading" constant="50" id="CTl-DX-Rst"/>
                             <constraint firstItem="5hP-iP-DMM" firstAttribute="leading" secondItem="Rib-j4-2s7" secondAttribute="leading" constant="16" id="DKa-ut-fei"/>
+                            <constraint firstItem="BV0-Wb-1xe" firstAttribute="bottom" secondItem="5sI-p1-8EN" secondAttribute="bottom" id="ElB-1p-4dP"/>
+                            <constraint firstItem="BV0-Wb-1xe" firstAttribute="trailing" secondItem="5sI-p1-8EN" secondAttribute="trailing" id="OBc-lN-7s3"/>
                             <constraint firstItem="g9g-nO-RwJ" firstAttribute="leading" secondItem="Rib-j4-2s7" secondAttribute="leading" id="eT3-26-mL0"/>
+                            <constraint firstItem="BV0-Wb-1xe" firstAttribute="leading" secondItem="5sI-p1-8EN" secondAttribute="leading" id="enB-1B-soB"/>
+                            <constraint firstItem="BV0-Wb-1xe" firstAttribute="top" secondItem="5sI-p1-8EN" secondAttribute="top" id="voV-ru-g7H"/>
                             <constraint firstItem="g9g-nO-RwJ" firstAttribute="top" secondItem="5hP-iP-DMM" secondAttribute="bottom" constant="30" id="wPX-BF-7hp"/>
                             <constraint firstItem="5sI-p1-8EN" firstAttribute="top" secondItem="Rib-j4-2s7" secondAttribute="top" constant="50" id="x8t-Sf-orD"/>
                             <constraint firstItem="Rib-j4-2s7" firstAttribute="trailing" secondItem="5hP-iP-DMM" secondAttribute="trailing" id="zNv-sc-cgn"/>
@@ -215,6 +235,37 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bDe-21-0Uw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1756.9230769230769" y="3.5545023696682461"/>
+        </scene>
+        <!--Artist Details Controller-->
+        <scene sceneID="rKO-9c-Zo0">
+            <objects>
+                <viewController storyboardIdentifier="ArtistDetailsController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="8lb-Qq-qoJ" customClass="ArtistDetailsController" customModule="Musicplayer" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="4Jk-kg-Bta">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LSC-nE-145">
+                                <rect key="frame" x="0.0" y="97" width="390" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="zhV-f3-iIh"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="LSC-nE-145" firstAttribute="leading" secondItem="zhV-f3-iIh" secondAttribute="leading" id="30r-FI-ZIO"/>
+                            <constraint firstItem="LSC-nE-145" firstAttribute="top" secondItem="zhV-f3-iIh" secondAttribute="top" constant="50" id="NMe-yS-zWO"/>
+                            <constraint firstItem="zhV-f3-iIh" firstAttribute="trailing" secondItem="LSC-nE-145" secondAttribute="trailing" id="vOY-u5-nIb"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="infoLabel" destination="LSC-nE-145" id="HFj-Ep-FHP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="srQ-1Q-VUr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2582" y="4"/>
         </scene>
     </scenes>
     <resources>

@@ -47,6 +47,7 @@ extension TracksController: UICollectionViewDelegate {
         let url = tracks[indexPath.row].previewURL
         vc.track = track
         
+        
         show(vc, sender: self)
     }
     
