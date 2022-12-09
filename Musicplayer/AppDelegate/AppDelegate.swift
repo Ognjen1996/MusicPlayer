@@ -17,7 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "TracksController") as! TracksController
         vc.presenter = TracksPresenter()
-        window?.rootViewController = vc
+        let nc = UINavigationController(rootViewController: vc)
+        window?.rootViewController = nc
         window?.makeKeyAndVisible()
         return true
     }

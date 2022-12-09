@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import AVFoundation
+import AVKit
 
 
 class TracksController: UIViewController {
@@ -38,6 +40,15 @@ extension TracksController: TracksPresenterDelegate {
     }
 }
 extension TracksController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let vc = storyboard?.instantiateViewController(withIdentifier: "PlayerController") as! PlayerController
+        guard let tracks = tracks else { return }
+        let track = tracks[indexPath.row]
+        let url = tracks[indexPath.row].previewURL
+        vc.track = track
+        
+        show(vc, sender: self)
+    }
     
 }
 extension TracksController: UICollectionViewDataSource {
@@ -48,8 +59,9 @@ extension TracksController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: TracksCollectionViewCell  = collectionView.dequeueReusableCell(withReuseIdentifier: "TracksCollectionViewCell", for: indexPath) as! TracksCollectionViewCell
         guard let tracks = tracks else { return cell}
+        
         cell.setup(with: tracks[indexPath.row])
-        cell.topListLabel.text = String(indexPath.row) + ". "
+        cell.topListLabel.text = String(indexPath.row + 1) + ". "
         return cell
     }
 }
