@@ -15,7 +15,9 @@ class PlayerController: UIViewController {
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var infoLabel: UILabel!
     @IBOutlet weak var albumCoverImageView: UIImageView!
+    @IBOutlet weak var detailsButton: UIButton!
     
+    var flag: Int = 0
     var player = AVPlayer()
     var playerController = AVPlayerViewController()
     
@@ -23,6 +25,10 @@ class PlayerController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if flag == 1 {
+            imageView.isHidden = true
+            detailsButton.isHidden = true
+        }
         playTrack()
         // Do any additional setup after loading the view.
     }

@@ -213,6 +213,7 @@
                     <connections>
                         <outlet property="albumCoverImageView" destination="fZY-H2-L8o" id="gCt-lB-TbN"/>
                         <outlet property="containerView" destination="g9g-nO-RwJ" id="wEE-Sr-zLM"/>
+                        <outlet property="detailsButton" destination="BV0-Wb-1xe" id="ofK-JE-7OC"/>
                         <outlet property="imageView" destination="5sI-p1-8EN" id="ddr-vB-dpS"/>
                         <outlet property="infoLabel" destination="5hP-iP-DMM" id="NhG-zh-Din"/>
                     </connections>
@@ -280,7 +281,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="pIZ-0g-wlC"/>
                                 </constraints>
-                                <color key="tintColor" red="1" green="1" blue="1" alpha="0.10846957781456953" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="tintColor" red="1" green="0.93806750878042067" blue="0.91915479165455571" alpha="0.10614134933774834" colorSpace="custom" customColorSpace="displayP3"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Button"/>
                                 <userDefinedRuntimeAttributes>
@@ -308,6 +309,7 @@
                     <connections>
                         <outlet property="artistImageView" destination="NfU-Bc-0Hs" id="7TN-HY-cS5"/>
                         <outlet property="infoLabel" destination="LSC-nE-145" id="HFj-Ep-FHP"/>
+                        <outlet property="topTracksButton" destination="MKw-1c-UIS" id="CCI-kZ-Np4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="srQ-1Q-VUr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -441,6 +443,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="artistInfoLabel" destination="fqT-Kc-8eu" id="l1T-QC-4Ao"/>
                         <outlet property="collectionView" destination="UyS-z4-Ln0" id="9Np-cg-Wml"/>
                     </connections>
                 </viewController>

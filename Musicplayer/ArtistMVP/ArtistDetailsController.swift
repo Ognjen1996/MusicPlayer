@@ -12,20 +12,29 @@ class ArtistDetailsController: UIViewController {
     
     @IBOutlet weak var infoLabel: UILabel!
     @IBOutlet weak var artistImageView: UIImageView!
+    @IBOutlet weak var topTracksButton: UIButton!
     
     
     var artistID: String?
     var artistData: ArtistModel?
     var artistImages: ArtistImagesModel?
     var presenter: ArtistPresenter?
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter?.delegate = self
+
+        settupButton()
         if let artistID = artistID {
             presenter?.fetchArtistData(for: artistID)
             presenter?.fetchArtistImages(for: artistID)
         }
+    }
+    private func settupButton() {
+        topTracksButton.tintColor = .white
+        topTracksButton.alpha = 0.4
+        topTracksButton.setTitle("top tracks", for: .normal)
     }
     func setup(with artist: ArtistModel) {
         for i in artist.artists[0].blurbs {
@@ -34,35 +43,33 @@ class ArtistDetailsController: UIViewController {
         if infoLabel.text == "" {
             infoLabel.text = "No details available for this artist."
         }
-        if artistImages?.images.indices.contains(0) ?? false {
-            if let coverImage = artistImages {
-                let coverImages = coverImage.images[0].url
+        if let imageArray = artistImages?.images {
+            if imageArray.isEmpty {
+                artistImageView.image = UIImage(named: "none")
+            }
+            else {
+                let coverImages = imageArray[0].url
                 let coverImageURL = URL(string: coverImages)
                 artistImageView.kf.setImage(with: coverImageURL)
             }
         }
-        else {
-            artistImageView.image = UIImage(named: "none")
-        }
-        
     }
+    
     @IBAction func showTracksForArtist() {
-        let pc = storyboard?.instantiateViewController(withIdentifier: "PlayerController") as! PlayerController
         let vc = storyboard?.instantiateViewController(withIdentifier: "ArtistTopTracksController") as! ArtistTopTracksController
         vc.artistID = artistID
-        if artistImages?.images.indices.contains(0) ?? false {
-            if let artistImages = artistImages {
-                vc.artistImage = artistImages.images[0].url
+        if let imageArray = artistImages?.images {
+            if imageArray.isEmpty {
+                vc.artistImage = "https://www.galenindia.com/detials.php?vId=45"
+                }
+
+            else {
+                vc.artistImage = artistImages?.images[0].url
             }
-        }
-        else {
-            vc.artistImage = "https://www.galenindia.com/detials.php?vId=45"
         }
         vc.presenter = ArtistTopTracksPresenter()
         show(vc, sender: self)
     }
-
-
 }
 extension ArtistDetailsController: ArtistPresenterDelegate {
     func imagePresenter(_ presenter: ArtistPresenter, imageData: ArtistImagesModel) {

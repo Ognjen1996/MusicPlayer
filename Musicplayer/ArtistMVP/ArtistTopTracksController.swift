@@ -11,6 +11,7 @@ class ArtistTopTracksController: UIViewController {
     var artistTracks: [Track] = [] {
         didSet {
             collectionView.reloadData()
+            artistInfoLabel.text = artistTracks[0].artistName + "'s top tracks"
         }
     }
     var artistID: String!
@@ -21,10 +22,9 @@ class ArtistTopTracksController: UIViewController {
         presenter?.delegate = self
         collectionView.delegate = self
         collectionView.dataSource = self
+        
         presenter?.fetchArtistTopData(for: artistID)
 
-
-        // Do any additional setup after loading the view.
     }
 
 }
@@ -43,6 +43,7 @@ extension ArtistTopTracksController: UICollectionViewDataSource {
         let cell: TracksCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "TracksCollectionViewCell", for: indexPath) as! TracksCollectionViewCell
         if let artistImage = artistImage {
             cell.setup(with: artistTracks[indexPath.row], and: artistImage)
+            cell.topListLabel.text = String(indexPath.row + 1) + ". "
         }
 
         return cell
@@ -56,6 +57,7 @@ extension ArtistTopTracksController: UICollectionViewDelegate {
         let track = artistTracks[indexPath.row]
         let url = artistTracks[indexPath.row].previewURL
         vc.track = track
+        vc.flag = 1
         self.present(vc, animated: true)
     }
 }
