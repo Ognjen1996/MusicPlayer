@@ -6,21 +6,20 @@
 //
 
 import Foundation
-struct TrackData: Codable {
-    var tracks: [Track]
+struct ArtistTrackModel: Codable {
+    var tracks: [ArtistTrack]
 }
 
-struct Track: Codable {
+struct ArtistTrack: Codable {
     var type: String
     var id: String
     var index: Int
     var disc: Int
     var href: String
     var playbackSeconds: Int
-    var explicit: Bool?
-    var isExplicit: Bool?
-    var isAvailableInHiRes: Bool?
+    var isExplicit: Bool
     var isStreamable: Bool
+    var isAvailableInHiRes: Bool
     var name: String
     var isrc: String
     var shortcut: String
@@ -28,39 +27,31 @@ struct Track: Codable {
     var artistId: String
     var artistName: String
     var albumName: String
-    var formats: [Formats]
+    var formats: [ArtistFormats]
+    var losslessFormats: [ArtistFormats]
     var albumId: String
+    var isAvailableInAtmos: Bool
     var contributors: Contributors
     var links: Links
     var previewURL: String
-    var isAvailableInAtmos: Bool?
-    var losslessFormats: [Formats]?
 }
-struct Formats: Codable {
+struct ArtistFormats: Codable {
     var type: String
     var bitrate: Int
     var name: String
-    var sampleBits: Int?
-    var sampleRate: Int?
+    var sampleBits: Int
+    var sampleRate: Int
 }
-struct Contributors: Codable {
+struct ArtistContributors: Codable {
     var guestMusician: String?
     var remixer: String?
     var producer: String?
     var composer: String?
     var engineer: String?
     var guestVocals: String?
-    var featuredPerformer: String?
     var primaryArtist: String
+    var featuredPerformer: String?
 }
-struct Links: Codable {
-    var artists: idData
-    var albums: idData
-    var genres: idData
-    var tags: idData
-}
-struct idData: Codable {
-    var ids: [String]
-    var href: String
-}
+
+
 

@@ -41,6 +41,13 @@ class ArtistDetailsController: UIViewController {
         }
         
     }
+    @IBAction func showTracksForArtist() {
+        let vc = storyboard?.instantiateViewController(withIdentifier: "ArtistTopTracksController") as! ArtistTopTracksController
+        vc.artistID = artistID
+        vc.artistImage = artistImages?.images[0].url
+        vc.presenter = ArtistTopTracksPresenter()
+        show(vc, sender: self)
+    }
 
 
 }

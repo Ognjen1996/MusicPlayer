@@ -43,12 +43,13 @@ class PlayerController: UIViewController {
         
         player.play()
     }
+    
     @IBAction func showDetails() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "ArtistDetailsController") as! ArtistDetailsController
         vc.presenter = ArtistPresenter()
         vc.artistID = track.artistId
-        self.present(vc, animated: true)
+        show(vc, sender: self)
     }
     
 }

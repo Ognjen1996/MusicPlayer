@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class TracksCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var trackNameLabel: UILabel!
@@ -19,5 +20,11 @@ class TracksCollectionViewCell: UICollectionViewCell {
         trackNameLabel.text = track.artistName + "\n\n" + track.name + "\nDuration: " +  String(format: "%.2f", duration) + "\nAlbum: " + track.albumName
         trackImage.image = UIImage(named: "song")
         
+    }
+    func setup(with track: Track , and image: String) {
+        var duration = Double(track.playbackSeconds)/60.0
+        trackNameLabel.text = track.artistName + "\n\n" + track.name + "\nDuration: " +  String(format: "%.2f", duration) + "\nAlbum: " + track.albumName
+        let url = URL(string: image)
+        trackImage.kf.setImage(with: url)
     }
 }
