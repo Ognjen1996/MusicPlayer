@@ -34,7 +34,7 @@ class PlayerController: UIViewController {
         playerController.player = player
         
         albumCoverImageView.frame = containerView.bounds
-        albumCoverImageView.image = UIImage(named: "song1")
+        albumCoverImageView.image = UIImage(named: "song")
         albumCoverImageView.contentMode = .scaleAspectFit
         playerController.contentOverlayView?.addSubview(albumCoverImageView)
         self.addChild(playerController)

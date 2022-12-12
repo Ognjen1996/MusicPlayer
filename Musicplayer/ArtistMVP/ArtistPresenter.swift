@@ -10,6 +10,7 @@ import Alamofire
 
 protocol ArtistPresenterDelegate: AnyObject {
     func artistPresenter(_ presenter: ArtistPresenter, data: ArtistModel)
+    func imagePresenter(_ presenter: ArtistPresenter, imageData: ArtistImagesModel)
 }
 
 class ArtistPresenter {
@@ -38,5 +39,29 @@ class ArtistPresenter {
                 debugPrint(error)
             }
         }
+    }
+    func fetchArtistImages(for artist: String) {
+        
+        let baseUrl = "https://api.napster.com//v2.2/artists/\(artist)/images?apikey=YzVkM2I1ODItMWQ2YS00ZDc0LThmNDUtMDg1MjRlZTg5ZTU5"
+        guard let url = URL(string: baseUrl) else { return }
+        var request = URLRequest(url: url)
+        
+        request.method = .get
+        
+        AF.request(request).response { [weak self] response in
+            guard let self = self,
+                  let data = response.data
+            else { return }
+            
+            do {
+                let decoder = JSONDecoder()
+                let userData = try decoder.decode(ArtistImagesModel.self, from: data)
+                self.delegate?.imagePresenter(self, imageData: userData)
+            } catch let error {
+                debugPrint(error)
+            }
+        }
+    
+        
     }
 }
