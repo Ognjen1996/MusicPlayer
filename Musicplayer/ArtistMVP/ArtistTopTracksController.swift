@@ -5,6 +5,7 @@ import UIKit
 class ArtistTopTracksController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var artistInfoLabel: UILabel!
     
     var presenter: ArtistTopTracksPresenter?
     var artistTracks: [Track] = [] {
@@ -55,7 +56,7 @@ extension ArtistTopTracksController: UICollectionViewDelegate {
         let track = artistTracks[indexPath.row]
         let url = artistTracks[indexPath.row].previewURL
         vc.track = track
-        show(vc, sender: self)
+        self.present(vc, animated: true)
     }
 }
 

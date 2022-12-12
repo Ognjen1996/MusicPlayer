@@ -170,7 +170,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g9g-nO-RwJ" userLabel="ContainerView">
-                                <rect key="frame" x="0.0" y="407" width="390" height="373"/>
+                                <rect key="frame" x="0.0" y="407" width="390" height="403"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fZY-H2-L8o">
                                         <rect key="frame" x="0.0" y="0.0" width="390" height="358"/>
@@ -195,7 +195,7 @@
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="5hP-iP-DMM" firstAttribute="top" secondItem="5sI-p1-8EN" secondAttribute="bottom" constant="56" id="12R-C4-w5V"/>
-                            <constraint firstItem="Rib-j4-2s7" firstAttribute="bottom" secondItem="g9g-nO-RwJ" secondAttribute="bottom" constant="30" id="8ua-TA-KnL"/>
+                            <constraint firstItem="Rib-j4-2s7" firstAttribute="bottom" secondItem="g9g-nO-RwJ" secondAttribute="bottom" id="8ua-TA-KnL"/>
                             <constraint firstItem="Rib-j4-2s7" firstAttribute="trailing" secondItem="g9g-nO-RwJ" secondAttribute="trailing" id="93p-34-ji8"/>
                             <constraint firstItem="5sI-p1-8EN" firstAttribute="leading" secondItem="Rib-j4-2s7" secondAttribute="leading" constant="50" id="CTl-DX-Rst"/>
                             <constraint firstItem="5hP-iP-DMM" firstAttribute="leading" secondItem="Rib-j4-2s7" secondAttribute="leading" constant="16" id="DKa-ut-fei"/>

@@ -35,7 +35,7 @@ class PlayerController: UIViewController {
         
         albumCoverImageView.frame = containerView.bounds
         albumCoverImageView.image = UIImage(named: "song")
-        albumCoverImageView.contentMode = .scaleAspectFit
+        albumCoverImageView.contentMode = .top
         playerController.contentOverlayView?.addSubview(albumCoverImageView)
         self.addChild(playerController)
         playerController.view.frame = containerView.bounds
@@ -43,12 +43,16 @@ class PlayerController: UIViewController {
         
         player.play()
     }
+    func stopTrack() {
+        player.pause()
+    }
     
     @IBAction func showDetails() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "ArtistDetailsController") as! ArtistDetailsController
         vc.presenter = ArtistPresenter()
         vc.artistID = track.artistId
+        stopTrack()
         show(vc, sender: self)
     }
     

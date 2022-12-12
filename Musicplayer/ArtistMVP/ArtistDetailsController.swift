@@ -31,10 +31,15 @@ class ArtistDetailsController: UIViewController {
         for i in artist.artists[0].blurbs {
             infoLabel.text! += i + "\n"
         }
-        if let coverImage = artistImages?.images {
-            let coverImages = coverImage[0].url
-            let coverImageURL = URL(string: coverImages)
-            artistImageView.kf.setImage(with: coverImageURL)
+        if infoLabel.text == "" {
+            infoLabel.text = "No details available for this artist."
+        }
+        if artistImages?.images.indices.contains(0) ?? false {
+            if let coverImage = artistImages {
+                let coverImages = coverImage.images[0].url
+                let coverImageURL = URL(string: coverImages)
+                artistImageView.kf.setImage(with: coverImageURL)
+            }
         }
         else {
             artistImageView.image = UIImage(named: "none")
@@ -42,9 +47,17 @@ class ArtistDetailsController: UIViewController {
         
     }
     @IBAction func showTracksForArtist() {
+        let pc = storyboard?.instantiateViewController(withIdentifier: "PlayerController") as! PlayerController
         let vc = storyboard?.instantiateViewController(withIdentifier: "ArtistTopTracksController") as! ArtistTopTracksController
         vc.artistID = artistID
-        vc.artistImage = artistImages?.images[0].url
+        if artistImages?.images.indices.contains(0) ?? false {
+            if let artistImages = artistImages {
+                vc.artistImage = artistImages.images[0].url
+            }
+        }
+        else {
+            vc.artistImage = "https://www.galenindia.com/detials.php?vId=45"
+        }
         vc.presenter = ArtistTopTracksPresenter()
         show(vc, sender: self)
     }
