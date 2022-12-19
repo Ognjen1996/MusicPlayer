@@ -26,6 +26,7 @@ class TracksController: UIViewController {
         presenter?.delegate = self
         collectionView.dataSource = self
         collectionView.delegate = self
+        
         presenter?.fetchTracks()
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: 150, height: 70)
