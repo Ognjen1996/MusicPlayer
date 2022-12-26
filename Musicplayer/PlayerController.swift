@@ -1,9 +1,3 @@
-//
-//  PlayerController.swift
-//  Musicplayer
-//
-//  Created by Ognjen on 6.12.22..
-//
 
 import UIKit
 import AVFoundation
@@ -25,6 +19,7 @@ class PlayerController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navBarSetup()
         if flag == 1 {
             imageView.isHidden = true
             detailsButton.isHidden = true
@@ -34,7 +29,7 @@ class PlayerController: UIViewController {
     }
     
     func playTrack() {
-        infoLabel.text = track.artistName + "\n\n" + track.albumName
+        infoLabel.text = track.artistName + "\n\n" + track.name
         let url = URL(string: track.previewURL)
         self.player = AVPlayer(url: url!)
         playerController.player = player
@@ -51,6 +46,14 @@ class PlayerController: UIViewController {
     }
     func stopTrack() {
         player.pause()
+    }
+    func navBarSetup() {
+        let appearance = UINavigationBarAppearance()
+        appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+        appearance.backgroundColor = .black
+        navigationItem.standardAppearance = appearance
+        navigationItem.scrollEdgeAppearance = appearance
+        title = "Player"
     }
     
     @IBAction func showDetails() {

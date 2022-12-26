@@ -11,7 +11,12 @@ class ArtistTopTracksController: UIViewController {
     var artistTracks: [Track] = [] {
         didSet {
             collectionView.reloadData()
-            artistInfoLabel.text = artistTracks[0].artistName + "'s top tracks"
+            if artistTracks.isEmpty {
+                artistInfoLabel.text =  "No additional tracks for this artist"
+            }
+            else {
+                artistInfoLabel.text = artistTracks[0].artistName + "'s top tracks"
+            }
         }
     }
     var artistID: String!
@@ -22,9 +27,18 @@ class ArtistTopTracksController: UIViewController {
         presenter?.delegate = self
         collectionView.delegate = self
         collectionView.dataSource = self
+        navBarSetup()
         
         presenter?.fetchArtistTopData(for: artistID)
 
+    }
+    func navBarSetup() {
+        let appearance = UINavigationBarAppearance()
+        appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+        appearance.backgroundColor = .black
+        navigationItem.standardAppearance = appearance
+        navigationItem.scrollEdgeAppearance = appearance
+        title = "Top Tracks"
     }
 
 }

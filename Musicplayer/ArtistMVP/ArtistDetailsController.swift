@@ -24,12 +24,20 @@ class ArtistDetailsController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter?.delegate = self
-
+        navBarSetup()
         settupButton()
         if let artistID = artistID {
             presenter?.fetchArtistData(for: artistID)
             presenter?.fetchArtistImages(for: artistID)
         }
+    }
+    func navBarSetup() {
+        let appearance = UINavigationBarAppearance()
+        appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+        appearance.backgroundColor = .black
+        navigationItem.standardAppearance = appearance
+        navigationItem.scrollEdgeAppearance = appearance
+        title = "Artist Details"
     }
     private func settupButton() {
         topTracksButton.tintColor = .white

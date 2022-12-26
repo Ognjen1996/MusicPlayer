@@ -26,6 +26,7 @@ class TracksController: UIViewController {
         presenter?.delegate = self
         collectionView.dataSource = self
         collectionView.delegate = self
+        navBarSetup()
         
         presenter?.fetchTracks()
         let layout = UICollectionViewFlowLayout()
@@ -33,6 +34,14 @@ class TracksController: UIViewController {
 
         collectionView.collectionViewLayout = layout
         
+    }
+    func navBarSetup() {
+        let appearance = UINavigationBarAppearance()
+        appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+        appearance.backgroundColor = .black
+        navigationItem.standardAppearance = appearance
+        navigationItem.scrollEdgeAppearance = appearance
+        title = "Tracks"
     }
 }
 extension TracksController: TracksPresenterDelegate {
