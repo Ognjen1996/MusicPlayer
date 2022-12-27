@@ -24,12 +24,14 @@ class ArtistDetailsController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter?.delegate = self
+        if let artistID = artistID {
+            presenter?.fetchArtistImages(for: artistID)
+            presenter?.fetchArtistData(for: artistID)
+            
+        }
         navBarSetup()
         settupButton()
-        if let artistID = artistID {
-            presenter?.fetchArtistData(for: artistID)
-            presenter?.fetchArtistImages(for: artistID)
-        }
+
     }
     func navBarSetup() {
         let appearance = UINavigationBarAppearance()
@@ -51,7 +53,10 @@ class ArtistDetailsController: UIViewController {
         if infoLabel.text == "" {
             infoLabel.text = "No details available for this artist."
         }
-        if let imageArray = artistImages?.images {
+
+    }
+    func setupImage(with artist: ArtistImagesModel) {
+        let imageArray = artist.images
             if imageArray.isEmpty {
                 artistImageView.image = UIImage(named: "none")
             }
@@ -61,7 +66,6 @@ class ArtistDetailsController: UIViewController {
                 artistImageView.kf.setImage(with: coverImageURL)
             }
         }
-    }
     
     @IBAction func showTracksForArtist() {
         let vc = storyboard?.instantiateViewController(withIdentifier: "ArtistTopTracksController") as! ArtistTopTracksController
@@ -80,14 +84,18 @@ class ArtistDetailsController: UIViewController {
     }
 }
 extension ArtistDetailsController: ArtistPresenterDelegate {
+    
     func imagePresenter(_ presenter: ArtistPresenter, imageData: ArtistImagesModel) {
         self.artistImages = imageData
+        setupImage(with: imageData)
     }
     
     func artistPresenter(_ presenter: ArtistPresenter, data: ArtistModel) {
         self.artistData = data
         setup(with: data)
     }
+
+    
     
     
 }
